@@ -12,3 +12,16 @@
 	"graph.h"
 	<math.h>
 
+1462981414 source:/home/federico/Scrivania/Opearational_Research/LAB3_OR/main.c
+	<stdio.h>
+	<stdlib.h>
+	"graph.h"
+
+1462980746 /home/federico/Scrivania/Opearational_Research/LAB3_OR/graph.h
+
+1462981379 source:/home/federico/Scrivania/Opearational_Research/LAB3_OR/graph.c
+	<stdio.h>
+	<stdlib.h>
+	"graph.h"
+	<math.h>
+

@@ -1,18 +1,21 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "graph.h"
-#define N 24
+#define N 20
 
 int main()
 {
 
     Graph b;
     b=GRAPHinit_b(N);
-    Graph f;
-    f=GRAPHinit_f(N);
-    Graph c;
+    Graph tsd;
+    tsd=GRAPHinit_tsd(N);
+
+    int a=GRAPHisConnected(b);
+
+    printf("Number of tree %d \n",a);
+
     GRAPHprint(b);
-    GRAPHprint(f);
 
     //full mesh
     //route traffic shortest path
@@ -29,7 +32,7 @@ int main()
 
 
     GRAPHfree(b);
-    GRAPHfree(f);
+    GRAPHfree(tsd);
     return 0;
 
 }
