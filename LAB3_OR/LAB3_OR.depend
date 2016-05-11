@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1462961499 source:/home/federico/Scrivania/Operative research/LAB3_OR/main.c
+	<stdio.h>
+	<stdlib.h>
+	"graph.h"
+
+1462961395 /home/federico/Scrivania/Operative research/LAB3_OR/graph.h
+
+1462961468 source:/home/federico/Scrivania/Operative research/LAB3_OR/graph.c
+	<stdio.h>
+	<stdlib.h>
+	"graph.h"
+	<math.h>
+
