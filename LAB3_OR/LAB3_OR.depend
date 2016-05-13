@@ -25,3 +25,16 @@
 	"graph.h"
 	<math.h>
 
+1463156345 source:/home/federico/Documenti/git/Operational_Research/LAB3_OR/graph.c
+	<stdio.h>
+	<stdlib.h>
+	"graph.h"
+	<math.h>
+
+1463156345 /home/federico/Documenti/git/Operational_Research/LAB3_OR/graph.h
+
+1463156492 source:/home/federico/Documenti/git/Operational_Research/LAB3_OR/main.c
+	<stdio.h>
+	<stdlib.h>
+	"graph.h"
+

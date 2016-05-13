@@ -5,20 +5,15 @@
 
 int main()
 {
-    Edge e;
+
     Graph b;
-    b=GRAPHinit(N,1);
+    b=GRAPHinit_b(N);
     Graph tsd;
     tsd=GRAPHinit_tsd(N);
-    Graph f;
-    f=GRAPHinit(N,0);
 
-    GRAPHrouteTraffic(b,tsd,f);
-    e=GRAPHmaxFlow(f);
+    int a=GRAPHisConnected(b);
 
-
-    printf("Number of tree %d \n",GRAPHisConnected(b));
-    printf("Max flow at %d %d: %f",e.v,e.w,e.cost);
+    printf("Number of tree %d \n",a);
 
     GRAPHprint(b);
 
