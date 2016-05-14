@@ -13,7 +13,7 @@ static void CLEANvisit(Graph G);
 static void INITvisit(Graph G);
 float assignTraffic(Graph G,Graph T,Graph F,int s,int j);
 
-Edge EDGE(int v,int w,int cost){
+Edge EDGE(int v,int w,float cost){
     Edge e;
     e.v=v;
     e.w=w;
@@ -46,7 +46,13 @@ float **MATRIXint_tsd(int r,int c){
         t[i]=malloc(c*sizeof(float));
     for(i=0;i<r;i++)
         for(j=0;j<c;j++)
-            t[i][j]=(float)random()/8;
+        {
+            if(i!=j)
+            t[i][j]=(float)(rand()%100)+1;
+            else
+            t[i][j]=0;
+
+        }
     return t;
 }
 Graph GRAPHinit(int n,int value){
@@ -121,6 +127,8 @@ int GRAPHisConnected(Graph G){
 
     int somma=0,i;
 
+    G->va=VETint(G->V,0);
+
     dfs(G,0);
 
     for(i=0;i<G->V;i++){
@@ -133,6 +141,8 @@ int GRAPHisConnected(Graph G){
     else
         return 0;
 
+
+
 }
 void dfs(Graph G,int v){
     int i;
@@ -142,6 +152,7 @@ void dfs(Graph G,int v){
             dfs(G,i);
     }
 }
+
 
 int GRAPHoutNodes(Graph G,int a){
     int cont=0;
@@ -214,6 +225,10 @@ void GRAPHShortestPathBF(Graph G, int start)
          }
       }
    }
+
+   for(i=0;i<G->V;i++){
+   j=G->father[i];
+   }
 }
 
 float assignTraffic(Graph G,Graph T,Graph F,int s,int j){
@@ -222,14 +237,16 @@ float assignTraffic(Graph G,Graph T,Graph F,int s,int j){
 
     for(i=0;i<G->V;i++){
 
-        if(G->father[i]==s && i!=s){
+        if(G->father[i]==j && i!=s){
             F->adj[j][i]+=assignTraffic(G,T,F,s,i);
         }
     }
 
-    F->adj[j][i]+=T->adj[s][i];
 
-    return T->adj[s][i];
+    F->adj[G->father[j]][j]+=T->adj[s][j];
+    printf("summed %f index %d %d\n",F->adj[G->father[j]][j],G->father[j],j);
+
+    return T->adj[s][j];
 
 }
 
@@ -242,7 +259,7 @@ void CLEANvisit(Graph G) {
     G->weight = NULL;
 }
 
-void GRAPHrouteTraffic(Graph G, Graph T,Graph F){
+void GRAPHrouteTraffic(Graph G,Graph T,Graph F){
 
     int i;
 
@@ -266,6 +283,18 @@ Edge GRAPHmaxFlow(Graph G){
             e=EDGE(i,j,G->adj[i][j]);
         }}}
     return e;
+}
+
+void GRAPHcopy(Graph G, Graph T){
+
+    int i,j;
+
+    for(i=0;i<G->V;i++){
+        for(j=0;j<G->V;j++){
+            G->adj[i][j]=T->adj[i][j];
+            }
+    }
+
 }
 
 

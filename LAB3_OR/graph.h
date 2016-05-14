@@ -14,10 +14,10 @@ int time;
 typedef struct{
 int v;
 int w;
-int cost;
+float cost;
 }Edge;
 
-Edge EDGE(int,int,int);
+Edge EDGE(int,int,float);
 
 Graph GRAPHinit(int,int);
 Graph GRAPHinit_tsd(int);
@@ -30,6 +30,7 @@ int GRAPHoutNodes(Graph G,int a);
 int GRAPHinNodes(Graph G,int a);
 void GRAPHrouteTraffic(Graph G, Graph T,Graph F);
 Edge GRAPHmaxFlow(Graph G);
+void GRAPHcopy(Graph G, Graph T);
 
 
 
