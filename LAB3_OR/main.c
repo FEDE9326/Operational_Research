@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "graph.h"
-#define N 5
+#define N 10
 
 /*problema connessione grafo*/
 int main()
@@ -23,8 +23,6 @@ int main()
     e=GRAPHmaxFlow(f);
     GRAPHcopy(b2,b1);
     GRAPHremoveE(b2,e);
-    GRAPHprint(b2);
-    getchar();
     if(GRAPHisConnected(b2)){
         f=GRAPHinit(N,0);
         GRAPHrouteTraffic(b2,tsd,f);
@@ -36,14 +34,14 @@ int main()
     }while(flag==0);
 
     printf("Final topology\n");
-    GRAPHprint(b1);
-    printf("Final flow\n");
-    GRAPHprint(f);
+    GRAPHprint(b2);
+    //printf("Final flow\n");
+    //GRAPHprint(f);
     e=GRAPHmaxFlow(f);
     printf("Max flow at %d %d: %f\n",e.v,e.w,e.cost);
 
     GRAPHfree(f);
-    GRAPHfree(b1);
+    GRAPHfree(b2);
     GRAPHfree(tsd);
 
     return 0;

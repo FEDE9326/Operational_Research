@@ -244,7 +244,7 @@ float assignTraffic(Graph G,Graph T,Graph F,int s,int j){
 
 
     F->adj[G->father[j]][j]+=T->adj[s][j];
-    printf("summed %f index %d %d\n",F->adj[G->father[j]][j],G->father[j],j);
+    //printf("summed %f index %d %d\n",F->adj[G->father[j]][j],G->father[j],j);
 
     return T->adj[s][j];
 
