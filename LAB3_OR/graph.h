@@ -18,6 +18,8 @@ float cost;
 }Edge;
 
 Edge EDGE(int,int,float);
+void EDGEcopy(Edge a,Edge b);
+Edge* EDGEget(Graph G,int *n);
 
 Graph GRAPHinit(int,int);
 Graph GRAPHinit_tsd(int);
@@ -31,6 +33,7 @@ int GRAPHinNodes(Graph G,int a);
 void GRAPHrouteTraffic(Graph G, Graph T,Graph F);
 Edge GRAPHmaxFlow(Graph G);
 void GRAPHcopy(Graph G, Graph T);
+
 
 
 

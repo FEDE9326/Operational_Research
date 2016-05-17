@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "graph.h"
+#include "pq.h"
 #include <math.h>
 
 #define FLT_MAX 1000
@@ -14,11 +15,46 @@ static void INITvisit(Graph G);
 float assignTraffic(Graph G,Graph T,Graph F,int s,int j);
 
 Edge EDGE(int v,int w,float cost){
+
     Edge e;
     e.v=v;
     e.w=w;
     e.cost=cost;
     return e;
+}
+
+void EDGEcopy(Edge a,Edge b){
+
+    a.v=b.v;
+    a.w=b.w;
+    a.cost=b.cost;
+
+}
+
+Edge* EDGEget(Graph G, int *n){
+
+    int i,j,cont=0,k=0;
+    Edge *e,a;
+
+    for(i=0;i<G->V;i++){
+        for(j=0;j<G->V;j++){
+            if(G->adj[i][j]!=0)
+                cont++;
+        }}
+    n=cont;
+
+    e=malloc(cont*sizeof(Edge));
+
+    for(i=0;i<G->V;i++){
+        for(j=0;j<G->V;j++){
+            if(G->adj[i][j]!=0){
+                a=EDGE(i,j,G->adj[i][j]);
+                e[k]=a;
+                k++;
+            }
+        }}
+    return e;
+
 }
 
 float **MATRIXint(int r,int c,int value){
@@ -296,6 +332,8 @@ void GRAPHcopy(Graph G, Graph T){
     }
 
 }
+
+
 
 
 
