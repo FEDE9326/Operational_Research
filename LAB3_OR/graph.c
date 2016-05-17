@@ -23,11 +23,11 @@ Edge EDGE(int v,int w,float cost){
     return e;
 }
 
-void EDGEcopy(Edge a,Edge b){
+void EDGEcopy(Edge *a,Edge *b){
 
-    a.v=b.v;
-    a.w=b.w;
-    a.cost=b.cost;
+    a->v=b->v;
+    a->w=b->w;
+    a->cost=b->cost;
 
 }
 
@@ -41,7 +41,7 @@ Edge* EDGEget(Graph G, int *n){
             if(G->adj[i][j]!=0)
                 cont++;
         }}
-    n=cont;
+    *n=cont;
 
     e=malloc(cont*sizeof(Edge));
 

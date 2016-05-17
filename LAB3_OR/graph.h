@@ -18,8 +18,8 @@ float cost;
 }Edge;
 
 Edge EDGE(int,int,float);
-void EDGEcopy(Edge a,Edge b);
 Edge* EDGEget(Graph G,int *n);
+void EDGEcopy(Edge *a,Edge *b);
 
 Graph GRAPHinit(int,int);
 Graph GRAPHinit_tsd(int);
