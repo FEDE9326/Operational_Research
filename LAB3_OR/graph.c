@@ -31,6 +31,54 @@ void EDGEcopy(Edge *a,Edge *b){
 
 }
 
+Edge* EdgegetIN(Graph G,int a,int *n){
+
+    Edge *e;
+    int i,j=0,cont=0;
+
+    for(i=0;i<G->V;i++){
+        if(G->adj[i][a]!=0)
+        cont++;
+    }
+
+    *n=cont;
+    e=malloc(cont*sizeof(Edge));
+
+    for(i=0;i<G->V;i++){
+        if(G->adj[i][a]!=0){
+            e[j]=EDGE(i,a,G->adj[i][a]);
+            j++;
+        }
+    }
+
+    return e;
+
+}
+
+Edge* EdgegetOUT(Graph G,int a,int *n){
+
+    Edge *e;
+    int i,j=0,cont=0;
+
+    for(i=0;i<G->V;i++){
+        if(G->adj[a][i]!=0)
+        cont++;
+    }
+
+    *n=cont;
+    e=malloc(cont*sizeof(Edge));
+
+    for(i=0;i<G->V;i++){
+        if(G->adj[a][i]!=0){
+            e[j]=EDGE(a,i,G->adj[a][i]);
+            j++;
+        }
+    }
+
+    return e;
+
+}
+
 Edge* EDGEget(Graph G, int *n){
 
     int i,j,cont=0,k=0;
