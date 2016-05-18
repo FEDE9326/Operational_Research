@@ -84,7 +84,7 @@ float **MATRIXint_tsd(int r,int c){
         for(j=0;j<c;j++)
         {
             if(i!=j)
-            t[i][j]=(float)(rand()%100)+1;
+            t[i][j]=((float)rand())/RAND_MAX+0.5;
             else
             t[i][j]=0;
 
@@ -154,32 +154,37 @@ void GRAPHprint(Graph G){
 
     for(i=0;i<G->V;i++){
         for(j=0;j<G->V;j++)
-        printf("%f ",G->adj[i][j]);
+        printf("%d ",(int)G->adj[i][j]);
     printf("\n");
     }
 }
 
+//torna 1 se il grafo BIDIREZIONALE è connesso
 int GRAPHisConnected(Graph G){
 
-    int somma=0,i;
+    int somma=0,i,j,flag=0;
 
+    for(j=0;j<G->V && flag==0;j++){
+    somma=0;
     G->va=VETint(G->V,0);
 
-    dfs(G,0);
+    dfs(G,j);
 
     for(i=0;i<G->V;i++){
         if(G->va[i]==1)
             somma++;
     }
 
-    if(somma==G->V)
-        return 1;
-    else
-        return 0;
+    if(somma!=G->V)
+        flag=1;
 
+    }
 
+    return !flag;
 
 }
+
+
 void dfs(Graph G,int v){
     int i;
     G->va[v]=1;
@@ -262,9 +267,6 @@ void GRAPHShortestPathBF(Graph G, int start)
       }
    }
 
-   for(i=0;i<G->V;i++){
-   j=G->father[i];
-   }
 }
 
 float assignTraffic(Graph G,Graph T,Graph F,int s,int j){
@@ -278,9 +280,7 @@ float assignTraffic(Graph G,Graph T,Graph F,int s,int j){
         }
     }
 
-
     F->adj[G->father[j]][j]+=T->adj[s][j];
-    //printf("summed %f index %d %d\n",F->adj[G->father[j]][j],G->father[j],j);
 
     return T->adj[s][j];
 
