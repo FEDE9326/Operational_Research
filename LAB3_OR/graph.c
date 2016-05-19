@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "graph.h"
 #include "pq.h"
+#include <time.h>
 #include <math.h>
 
 #define FLT_MAX 1000
@@ -123,6 +124,7 @@ float **MATRIXint(int r,int c,int value){
 }
 
 float **MATRIXint_tsd(int r,int c){
+    srand((unsigned)time(NULL));
     int i,j;
     float **t;
     t=malloc(r*sizeof(float*));
@@ -205,6 +207,18 @@ void GRAPHprint(Graph G){
         printf("%d ",(int)G->adj[i][j]);
     printf("\n");
     }
+}
+
+void GRAPHprintonfile(Graph G){
+    int i,j;
+    FILE *f;
+    f=fopen("3_1.txt","a+");
+    for(i=0;i<G->V;i++){
+        for(j=0;j<G->V;j++)
+        fprintf(f,"%d ",(int)G->adj[i][j]);
+    fprintf(f,"\n");
+    }
+    fprintf(f,"\n\n");
 }
 
 //torna 1 se il grafo BIDIREZIONALE è connesso

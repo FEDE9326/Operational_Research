@@ -29,6 +29,7 @@ void GRAPHinsertE(Graph,Edge);
 void GRAPHremoveE(Graph,Edge);
 void GRAPHfree(Graph);
 void GRAPHprint(Graph);
+void GRAPHprintonfile(Graph G);
 int GRAPHisConnected(Graph G);
 int GRAPHoutNodes(Graph G,int a);
 int GRAPHinNodes(Graph G,int a);
