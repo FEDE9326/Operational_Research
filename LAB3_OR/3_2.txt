@@ -1,0 +1,44 @@
+N : 20 	 Delta : 4
+Heuristic :Max flow at 15 10: 40.065811
+
+Random : Max flow at 11 5: 38.953842
+N : 20 	 Delta : 4
+Heuristic :Max flow at 15 10: 40.065811
+
+Random : Max flow at 11 5: 38.953842
+N : 20 	 Delta : 4
+Heuristic :Max flow at 18 8: 36.806278
+
+Random : Max flow at 16 3: 42.498009
+N : 20 	 Delta : 4
+Heuristic :Max flow at 18 8: 36.806278
+
+Random : Max flow at 16 3: 42.498009
+N : 20 	 Delta : 4
+Heuristic :Max flow at 18 3: 37.719875
+
+Random : Max flow at 19 3: 37.719875
+N : 20 	 Delta : 4
+Heuristic :Max flow at 18 12: 35.416908
+
+Random : Max flow at 18 11: 41.362770
+N : 20 	 Delta : 4
+Heuristic :Max flow at 17 1: 33.767418
+
+Random : Max flow at 3 5: 39.481815
+N : 20 	 Delta : 4
+Heuristic :Max flow at 16 7: 39.295441
+
+Random : Max flow at 4 3: 41.702908
+N : 20 	 Delta : 4
+Heuristic :Max flow at 14 5: 42.240555
+
+Random : Max flow at 13 5: 42.240555
+N : 20 	 Delta : 4
+Heuristic :Max flow at 17 3: 39.675491
+
+Random : Max flow at 6 14: 41.342243
+N : 20 	 Delta : 4
+Heuristic :Max flow at 10 11: 25.177179
+
+Random : Max flow at 19 1: 40.094322
