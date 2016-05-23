@@ -29,7 +29,7 @@ int main()
     do{
         indice=0;
         // Per ogni nodo fa in modo che rispetti la constraint sui delta in ingresso
-        while(GRAPHinNodes(b1,nodo)>delta){
+        while(GRAPHinNodes(b1,nodo)>2*delta){
         //fa l'elenco dei link che entrano nel nodo ordinandoli per traffico crescente
             l1=EdgegetIN(f,nodo,&n1);
             HeapSort(l1,n1);
@@ -48,7 +48,7 @@ int main()
         }
         indice=0;
         // Per ogni nodo fa in modo che rispetti la constraint sui delta in uscita
-         while(GRAPHoutNodes(b1,nodo)>delta){
+         while(GRAPHoutNodes(b1,nodo)>2*delta){
             l1=EdgegetOUT(f,nodo,&n1);
             HeapSort(l1,n1);
             e1=l1[indice];
@@ -114,17 +114,17 @@ int main()
     e1=GRAPHmaxFlow(f);
     printf("Max flow at %d %d: %f\n",e1.v,e1.w,e1.cost);
 
-    FILE *fp;
-    fp=fopen("3_2_heu.txt","a+");
+    //FILE *fp;
+    //p=fopen("3_2_heu.txt","a+");
     //fprintf(fp,"N : %d \t Delta : %d",N,delta);
     //GRAPHprintonfile(b1);
     //fprintf(fp,"\nHeuristic :Max flow at %d %d: %f\n",e1.v,e1.w,e1.cost);
-    fprintf(fp,"%d,%d,%f\n",N,delta,e1.cost);
+    //fprintf(fp,"%d,%d,%f\n",N,delta,e1.cost);
     Graph r;
     r=GRAPHinit(N,1);
     Graph r2;
     r2=GRAPHinit(N,1);
-    //GRAPHprint(r);
+
     /*printf("Random topology\n");
     GRAPHprint(b1);
     e1=GRAPHmaxFlow(f);
@@ -180,14 +180,15 @@ int main()
     }while(nodo<N);
     e1=GRAPHmaxFlow(f);
     printf("Max flow at %d %d: %f\n",e1.v,e1.w,e1.cost);
+    //GRAPHprint(r);
 
     //GRAPHprintonfile(r);
     //fprintf(fp,"\nRandom : Max flow at %d %d: %f\n",e1.v,e1.w,e1.cost);
-    fp=fopen("3_2_rand.txt","a+");
+    //fp=fopen("3_2_rand.txt","a+");
     //fprintf(fp,"N : %d \t Delta : %d",N,delta);
     //GRAPHprintonfile(b1);
     //fprintf(fp,"\nHeuristic :Max flow at %d %d: %f\n",e1.v,e1.w,e1.cost);
-    fprintf(fp,"%d,%d,%f\n",N,delta,e1.cost);
+    //fprintf(fp,"%d,%d,%f\n",N,delta,e1.cost);
 
     GRAPHfree(f);
     GRAPHfree(b1);
@@ -195,7 +196,7 @@ int main()
     GRAPHfree(tsd);
     GRAPHfree(r);
     GRAPHfree(r2);
-    fclose(fp);
+    //fclose(fp);
 
     return 0;
 

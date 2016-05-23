@@ -134,6 +134,7 @@ float **MATRIXint_tsd(int r,int c){
         for(j=0;j<c;j++)
         {
             if(i!=j)
+            //
             t[i][j]=((float)rand())/RAND_MAX+0.5;
             else
             t[i][j]=0;
