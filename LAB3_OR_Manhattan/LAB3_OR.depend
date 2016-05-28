@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1464185210 source:/home/casa/Federico/Operational_Research/LAB3_OR_Manhattan/graph.c
+1464368725 source:/home/casa/Federico/Operational_Research/LAB3_OR_Manhattan/graph.c
 	<stdio.h>
 	<stdlib.h>
 	"graph.h"
@@ -8,18 +8,19 @@
 	<math.h>
 	"random.h"
 
-1464183192 /home/casa/Federico/Operational_Research/LAB3_OR_Manhattan/graph.h
+1464365927 /home/casa/Federico/Operational_Research/LAB3_OR_Manhattan/graph.h
 
 1464001940 /home/casa/Federico/Operational_Research/LAB3_OR_Manhattan/pq.h
 
-1464108683 /home/casa/Federico/Operational_Research/LAB3_OR_Manhattan/random.h
+1464364534 /home/casa/Federico/Operational_Research/LAB3_OR_Manhattan/random.h
 
-1464185852 source:/home/casa/Federico/Operational_Research/LAB3_OR_Manhattan/main.c
+1464371076 source:/home/casa/Federico/Operational_Research/LAB3_OR_Manhattan/main.c
 	<stdio.h>
 	<stdlib.h>
 	"graph.h"
 	"pq.h"
 	"random.h"
+	<math.h>
 
 1464001940 source:/home/casa/Federico/Operational_Research/LAB3_OR_Manhattan/pq.c
 	"graph.h"

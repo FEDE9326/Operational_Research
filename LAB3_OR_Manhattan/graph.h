@@ -41,6 +41,7 @@ void GRAPHcopy(Graph G, Graph T);
 
 Graph GRAPHinitManhattan(int n,int delta,Graph T);
 void verifyTraffic(Graph G,Graph T);
+void exchangeNodes(Graph G,int v,int w);
 
 
 #endif // GRAPH_H_INCLUDED

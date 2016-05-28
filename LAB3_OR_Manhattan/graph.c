@@ -18,7 +18,7 @@ void assignTraffic(Graph G,Graph T,Graph F,int s,int j);
 float assignRandomNumber();
 float** getManhattan(Graph T,int n,int delta);
 
-long int seed=56392;
+long int seed=784512;
 
 Edge EDGE(int v,int w,float cost){
 
@@ -558,6 +558,42 @@ for(i=0;i<G->V;i++)
     printf("s2=%f\n",s2);
 
 
+}
+
+void exchangeNodes(Graph G,int v,int w){
+
+    int i;
+
+    int vettv[G->V];
+    int vettw[G->V];
+
+    for(i=0;i<G->V;i++){
+        vettv[i]=G->adj[v][i];
+
+
+    }
+
+    for(i=0;i<G->V;i++){
+        vettw[i]=G->adj[w][i];
+
+
+    }
+
+
+    for(i=0;i<G->V;i++){
+        G->adj[v][i]=vettw[i];
+        G->adj[i][v]=vettw[i];
+        G->adj[w][i]=vettv[i];
+        G->adj[i][w]=vettv[i];
+    }
+
+    if(G->adj[v][v]==1){
+        G->adj[v][v]=0;
+        G->adj[w][w]=0;
+        G->adj[v][w]=1;
+        G->adj[w][v]=1;}
+
+    return;
 }
 
 
