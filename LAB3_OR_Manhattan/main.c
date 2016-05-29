@@ -7,8 +7,6 @@
 
 #define N 16
 #define delta 4
-#define lambda 20
-
 
 int verify_constraints_delta(Graph G);
 float extract(int m);
@@ -16,15 +14,15 @@ float extract(int m);
 
 int main()
 {
-    Edge e1,e2,*listEdges;
+    Edge e1,e2;
 
     Graph b1,b2;
     Graph tsd;
     Graph f,f1;
 
     int indice,k,step;
-    int n,stop,n1,n2;
-    float val,p;
+    int stop,n1,n2;
+    float val,p,lambda,n;
 
     tsd=GRAPHinit_tsd(N);
 
@@ -37,9 +35,13 @@ int main()
     e1=GRAPHmaxFlow(f);
     printf("Max flow at %d %d: %f\n",e1.v,e1.w,e1.cost);
 
-    //stop=(int)sqrt(N);
+
+    //stop=(float)sqrt(N);
     stop=N;
-    //Una volta che la constraint sui delta viene rispettata tenta di eliminare il più congestionato
+    lambda=(double)N/10;
+    printf("lambda=%f\n",lambda);
+
+
     printf("Improving the solution with Meathauristics approach...\n");
     indice=0;
     k=0;
@@ -60,11 +62,14 @@ int main()
             EDGEcopy(&e1,&e2);
             printf("Better solution %d %d %f\n",e1.v,e1.w,e1.cost);
             step=k;
+            indice=0;
         }else{
-            val=extract(k);
-            printf("val=%f\n",val);
-            p=1-exp((-lambda)*val);
-            if(uniform01(&seed)<p){
+            p=log(1-(float)(k+1)/(3*stop))/(-lambda);
+            printf("p=%f\n",p);
+            val=uniform(0.1,1,&seed);
+            n=log(1-val)/(-lambda);
+            printf("Per entrare %f>%f?\n",n,p);
+            if(n>p){
                 GRAPHcopy(b1,b2);
                 GRAPHcopy(f,f1);
 
@@ -91,12 +96,12 @@ int main()
 
 }
 
-float extract(int m){
+/*float extract(int m){
 
     return lambda*exp((-lambda)*m);
 
 }
-
+*/
 
 
 

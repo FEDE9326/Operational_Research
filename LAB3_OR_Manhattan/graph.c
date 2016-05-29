@@ -18,7 +18,7 @@ void assignTraffic(Graph G,Graph T,Graph F,int s,int j);
 float assignRandomNumber();
 float** getManhattan(Graph T,int n,int delta);
 
-long int seed=784512;
+long int seed=868920;
 
 Edge EDGE(int v,int w,float cost){
 
