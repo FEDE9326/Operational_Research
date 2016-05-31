@@ -21,15 +21,18 @@ int main()
     Graph f,f1;
     f=GRAPHinit(N,0);
     f1=GRAPHinit(N,0);
-    int indice,trovato;
+    int indice,trovato,cont;
     int n,n1,n2;
 
     GRAPHrouteTraffic(b1,tsd,f);
+
+    printf("Building a feasable solution...\n");
     int nodo=0;
     do{
         indice=0;
+        n1=1;
         // Per ogni nodo fa in modo che rispetti la constraint sui delta in ingresso
-        while(GRAPHinNodes(b1,nodo)>2*delta){
+        while(GRAPHinNodes(b1,nodo)>delta && indice<n1){
         //fa l'elenco dei link che entrano nel nodo ordinandoli per traffico crescente
             l1=EdgegetIN(f,nodo,&n1);
             HeapSort(l1,n1);
@@ -47,8 +50,9 @@ int main()
             }
         }
         indice=0;
+        n1=1;
         // Per ogni nodo fa in modo che rispetti la constraint sui delta in uscita
-         while(GRAPHoutNodes(b1,nodo)>2*delta){
+         while(GRAPHoutNodes(b1,nodo)>delta && indice<n1){
             l1=EdgegetOUT(f,nodo,&n1);
             HeapSort(l1,n1);
             e1=l1[indice];
@@ -74,10 +78,11 @@ int main()
     f=GRAPHinit(N,0);
     GRAPHrouteTraffic(b1,tsd,f);
     e1=GRAPHmaxFlow(f);
-    //printf("Max flow at %d %d: %f\n",e1.v,e1.w,e1.cost);
+    printf("Max flow at %d %d: %f\n",e1.v,e1.w,e1.cost);
 
     //Una volta che la constraint sui delta viene rispettata tenta di eliminare il più congestionato
 
+    printf("Improving the solution...\n");
     do{
         listEdges=EDGEget(f,&n);
         HeapSort(listEdges,n);
@@ -114,22 +119,22 @@ int main()
     e1=GRAPHmaxFlow(f);
     printf("Max flow at %d %d: %f\n",e1.v,e1.w,e1.cost);
 
-    //FILE *fp;
-    //p=fopen("3_2_heu.txt","a+");
+    FILE *fp;
+    fp=fopen("3_2_heu.txt","a+");
     //fprintf(fp,"N : %d \t Delta : %d",N,delta);
     //GRAPHprintonfile(b1);
     //fprintf(fp,"\nHeuristic :Max flow at %d %d: %f\n",e1.v,e1.w,e1.cost);
-    //fprintf(fp,"%d,%d,%f\n",N,delta,e1.cost);
+    fprintf(fp,"%d,%d,%f\n",N,delta,e1.cost);
+    fclose(fp);
     Graph r;
     r=GRAPHinit(N,1);
     Graph r2;
     r2=GRAPHinit(N,1);
 
-    /*printf("Random topology\n");
-    GRAPHprint(b1);
-    e1=GRAPHmaxFlow(f);
-    printf("Max flow at %d %d: %f\n",e1.v,e1.w,e1.cost);
-*/
+    printf("Random topology\n");
+    //e1=GRAPHmaxFlow(f);
+    //printf("Max flow at %d %d: %f\n",e1.v,e1.w,e1.cost);
+
 
 
 
@@ -139,8 +144,9 @@ int main()
     nodo=0;
     do{
         indice=0;
+        cont=0;
         // Per ogni nodo fa in modo che rispetti la constraint sui delta in ingresso
-        while(GRAPHinNodes(r,nodo)>delta){
+        while(GRAPHinNodes(r,nodo)>delta && cont<N){
         //fa l'elenco dei link che entrano nel nodo ordinandoli per traffico crescente
             l1=EdgegetIN(f,nodo,&n1);
             //HeapSort(l1,n1);
@@ -148,29 +154,34 @@ int main()
             e1=l1[indice];
             GRAPHcopy(r2,r);
             GRAPHremoveE(r2,e1);
+            cont++;
             // se il grafo rimane connessso dopo aver rimosso il link meno usato il traffico viene ridistribuito
             // e si rifa il giro, in caso contrario si passa a provare il link successivo
             if(GRAPHisConnected(r2)){
                 f=GRAPHinit(N,0);
                 GRAPHrouteTraffic(r2,tsd,f);
                 GRAPHcopy(r,r2);
+                cont=0;
             }
         }
         indice=0;
+        cont=0;
         // Per ogni nodo fa in modo che rispetti la constraint sui delta in uscita
-         while(GRAPHoutNodes(r,nodo)>delta){
+         while(GRAPHoutNodes(r,nodo)>delta && cont<N){
             l1=EdgegetOUT(f,nodo,&n1);
             //HeapSort(l1,n1);
             indice=random()%n1;
             e1=l1[indice];
             GRAPHcopy(r2,r);
             GRAPHremoveE(r2,e1);
+            cont++;
             // se il grafo rimane connessso dopo aver rimosso il link meno usato il traffico viene ridistribuito
             // e si rifa il giro, in caso contrario si passa a provare il link successivo
             if(GRAPHisConnected(r2)){
                 f=GRAPHinit(N,0);
                 GRAPHrouteTraffic(r2,tsd,f);
                 GRAPHcopy(r,r2);
+                cont=0;
             }
         }
 
@@ -184,11 +195,11 @@ int main()
 
     //GRAPHprintonfile(r);
     //fprintf(fp,"\nRandom : Max flow at %d %d: %f\n",e1.v,e1.w,e1.cost);
-    //fp=fopen("3_2_rand.txt","a+");
+    fp=fopen("3_2_rand.txt","a+");
     //fprintf(fp,"N : %d \t Delta : %d",N,delta);
     //GRAPHprintonfile(b1);
     //fprintf(fp,"\nHeuristic :Max flow at %d %d: %f\n",e1.v,e1.w,e1.cost);
-    //fprintf(fp,"%d,%d,%f\n",N,delta,e1.cost);
+    fprintf(fp,"%d,%d,%f\n",N,delta,e1.cost);
 
     GRAPHfree(f);
     GRAPHfree(b1);
