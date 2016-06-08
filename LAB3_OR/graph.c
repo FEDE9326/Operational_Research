@@ -4,6 +4,7 @@
 #include "pq.h"
 #include <time.h>
 #include <math.h>
+#include "random.h"
 
 #define FLT_MAX 1000
 
@@ -14,6 +15,8 @@ void dfs(Graph G,int v);
 static void CLEANvisit(Graph G);
 static void INITvisit(Graph G);
 float assignTraffic(Graph G,Graph T,Graph F,int s,int j);
+long int se=868920;
+time_t t;
 
 Edge EDGE(int v,int w,float cost){
 
@@ -124,9 +127,11 @@ float **MATRIXint(int r,int c,int value){
 }
 
 float **MATRIXint_tsd(int r,int c){
-    srand((unsigned)time(NULL));
+    srand((unsigned)time(&t));
     int i,j;
     float **t;
+    float f;
+    long int seed=rnd32(se);
     t=malloc(r*sizeof(float*));
     for(i=0;i<r;i++)
         t[i]=malloc(c*sizeof(float));
@@ -135,11 +140,23 @@ float **MATRIXint_tsd(int r,int c){
         {
             if(i!=j)
             //
-            t[i][j]=((float)rand())/RAND_MAX+0.5;
+            {
+                f=uniform01(&seed);
+                if(f>0.0)
+                t[i][j]=((float)rand())/RAND_MAX+0.5;
+                else
+                t[i][j]=((float)rand()/RAND_MAX)*10+5;
+            }
+
             else
+            {
             t[i][j]=0;
+            //printf("%f",t[i][j]);
+            }
+
 
         }
+        printf("\n");
     return t;
 }
 Graph GRAPHinit(int n,int value){

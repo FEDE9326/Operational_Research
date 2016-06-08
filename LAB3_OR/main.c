@@ -3,15 +3,19 @@
 #include "graph.h"
 #include "pq.h"
 
-#define N 40
-#define delta 4
+//#define N 20
+//#define delta 15
+
 
 
 int verify_constraints_delta(Graph G);
 
 
-int main()
+int main(int argc,char *argv[])
 {
+    int N=atoi(argv[1]);
+    int delta=atoi(argv[2]);
+
     Edge e1,e2,*listEdges,*l1,*l2;
     Graph b1,b2;
     b1=GRAPHinit(N,1);
@@ -26,7 +30,7 @@ int main()
 
     GRAPHrouteTraffic(b1,tsd,f);
 
-    printf("Building a feasable solution...\n");
+    //printf("Building a feasable solution...\n");
     int nodo=0;
     do{
         indice=0;
@@ -78,11 +82,11 @@ int main()
     f=GRAPHinit(N,0);
     GRAPHrouteTraffic(b1,tsd,f);
     e1=GRAPHmaxFlow(f);
-    printf("Max flow at %d %d: %f\n",e1.v,e1.w,e1.cost);
+   // printf("Max flow at %d %d: %f\n",e1.v,e1.w,e1.cost);
 
     //Una volta che la constraint sui delta viene rispettata tenta di eliminare il più congestionato
 
-    printf("Improving the solution...\n");
+    //printf("Improving the solution...\n");
     do{
         listEdges=EDGEget(f,&n);
         HeapSort(listEdges,n);
@@ -100,7 +104,7 @@ int main()
                 e2=GRAPHmaxFlow(f1);
                 //printf("e1:%f e2:%f\n",e1.cost,e2.cost);
                 if(e2.cost<e1.cost){
-                    printf("migliorato %f\n",e2.cost);
+                    //printf("migliorato %f\n",e2.cost);
                     GRAPHcopy(b1,b2);
                     GRAPHcopy(f,f1);
                     trovato=1;
@@ -117,21 +121,21 @@ int main()
     //printf("Final topology\n");
     //GRAPHprint(b1);
     e1=GRAPHmaxFlow(f);
-    printf("Max flow at %d %d: %f\n",e1.v,e1.w,e1.cost);
+    //printf("Max flow at %d %d: %f\n",e1.v,e1.w,e1.cost);
 
     FILE *fp;
-    fp=fopen("3_2_heu.txt","a+");
+    fp=fopen("3_test_heu.txt","a+");
     //fprintf(fp,"N : %d \t Delta : %d",N,delta);
     //GRAPHprintonfile(b1);
     //fprintf(fp,"\nHeuristic :Max flow at %d %d: %f\n",e1.v,e1.w,e1.cost);
-    fprintf(fp,"%d,%d,%f\n",N,delta,e1.cost);
+    fprintf(fp,"%f\n",e1.cost);
     fclose(fp);
     Graph r;
     r=GRAPHinit(N,1);
     Graph r2;
     r2=GRAPHinit(N,1);
 
-    printf("Random topology\n");
+    //printf("Random topology\n");
     //e1=GRAPHmaxFlow(f);
     //printf("Max flow at %d %d: %f\n",e1.v,e1.w,e1.cost);
 
@@ -190,16 +194,16 @@ int main()
 
     }while(nodo<N);
     e1=GRAPHmaxFlow(f);
-    printf("Max flow at %d %d: %f\n",e1.v,e1.w,e1.cost);
+    //printf("Max flow at %d %d: %f\n",e1.v,e1.w,e1.cost);
     //GRAPHprint(r);
 
     //GRAPHprintonfile(r);
     //fprintf(fp,"\nRandom : Max flow at %d %d: %f\n",e1.v,e1.w,e1.cost);
-    fp=fopen("3_2_rand.txt","a+");
+    fp=fopen("3_test_rand.txt","a+");
     //fprintf(fp,"N : %d \t Delta : %d",N,delta);
     //GRAPHprintonfile(b1);
     //fprintf(fp,"\nHeuristic :Max flow at %d %d: %f\n",e1.v,e1.w,e1.cost);
-    fprintf(fp,"%d,%d,%f\n",N,delta,e1.cost);
+    fprintf(fp,"%f\n",e1.cost);
 
     GRAPHfree(f);
     GRAPHfree(b1);

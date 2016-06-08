@@ -29,3 +29,34 @@
 	<stdio.h>
 	<math.h>
 
+1465391192 source:/home/orterra/MEGA/Git/Operational_Research/LAB3_OR_Manhattan/graph.c
+	<stdio.h>
+	<stdlib.h>
+	"graph.h"
+	"pq.h"
+	<time.h>
+	<math.h>
+	"random.h"
+
+1464696873 /home/orterra/MEGA/Git/Operational_Research/LAB3_OR_Manhattan/graph.h
+
+1464195776 /home/orterra/MEGA/Git/Operational_Research/LAB3_OR_Manhattan/pq.h
+
+1464696873 /home/orterra/MEGA/Git/Operational_Research/LAB3_OR_Manhattan/random.h
+
+1465391363 source:/home/orterra/MEGA/Git/Operational_Research/LAB3_OR_Manhattan/main.c
+	<stdio.h>
+	<stdlib.h>
+	"graph.h"
+	"pq.h"
+	"random.h"
+	<math.h>
+	<time.h>
+
+1464195776 source:/home/orterra/MEGA/Git/Operational_Research/LAB3_OR_Manhattan/pq.c
+	"graph.h"
+
+1464195776 source:/home/orterra/MEGA/Git/Operational_Research/LAB3_OR_Manhattan/random.c
+	<stdio.h>
+	<math.h>
+

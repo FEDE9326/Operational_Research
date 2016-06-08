@@ -140,7 +140,7 @@ float **MATRIXint_tsd(int r,int c){
         {
             if(i!=j)
             //
-            t[i][j]=uniform(1,10,&seed);//assignRandomNumber();
+            t[i][j]=((float)rand()/RAND_MAX)*10+1;//assignRandomNumber();
             else
             t[i][j]=0;
 

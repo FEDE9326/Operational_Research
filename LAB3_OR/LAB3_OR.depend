@@ -98,19 +98,20 @@
 1463575818 source:/home/POLITO/s228317/Documenti/Operational_Research/LAB3_OR/pq.c
 	"graph.h"
 
-1463765443 source:/home/orterra/MEGA/Git/Operational_Research/LAB3_OR/graph.c
+1465387790 source:/home/orterra/MEGA/Git/Operational_Research/LAB3_OR/graph.c
 	<stdio.h>
 	<stdlib.h>
 	"graph.h"
 	"pq.h"
 	<time.h>
 	<math.h>
+	"random.h"
 
 1463669411 /home/orterra/MEGA/Git/Operational_Research/LAB3_OR/graph.h
 
 1463587531 /home/orterra/MEGA/Git/Operational_Research/LAB3_OR/pq.h
 
-1463765761 source:/home/orterra/MEGA/Git/Operational_Research/LAB3_OR/main.c
+1465387313 source:/home/orterra/MEGA/Git/Operational_Research/LAB3_OR/main.c
 	<stdio.h>
 	<stdlib.h>
 	"graph.h"
@@ -139,4 +140,10 @@
 
 1464700528 source:/home/POLITO/s231603/Operational_Research/LAB3_OR/pq.c
 	"graph.h"
+
+1464711808 source:/home/orterra/MEGA/Git/Operational_Research/LAB3_OR/random.c
+	<stdio.h>
+	<math.h>
+
+1465307666 /home/orterra/MEGA/Git/Operational_Research/LAB3_OR/random.h
 

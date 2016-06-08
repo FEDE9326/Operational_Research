@@ -1,0 +1,11 @@
+#!/bin/bash
+
+for i in {10..40..10}
+do
+	for j in {2..6..1}
+	do
+		/home/orterra/MEGA/Git/Operational_Research/LAB3_OR/bin/Debug/LAB3_OR $i $j
+		sleep 1.1		
+
+	done
+done
